@@ -176,6 +176,140 @@ label{font-weight:700;font-size:13px;display:block;margin:14px 0 6px}input,texta
 }
 </style>
 
+
+<style>
+/* A4 preenchido — mantém a tela normal e usa melhor a altura da folha no PDF */
+@media print {
+  @page { size: A4 portrait; margin: 0 !important; }
+
+  html, body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+
+  body * { visibility: hidden !important; }
+  #menu, #menu * { visibility: visible !important; }
+
+  #menu {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 8mm 8mm 6mm !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+    transform: none !important;
+    display: block !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #menu .content {
+    height: 283mm !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #menu .brand { flex: 0 0 auto !important; }
+  #menu .brand img { width: 25mm !important; height: 25mm !important; }
+  #menu .school { font-size: 11px !important; margin-top: 1px !important; }
+
+  #menu .title {
+    flex: 0 0 auto !important;
+    margin: 3mm -8mm 0 !important;
+    padding: 4mm 5mm 3.2mm !important;
+  }
+  #menu .title h2 { font-size: 27px !important; line-height: 1 !important; }
+  #menu .title .script { font-size: 31px !important; line-height: .85 !important; }
+
+  #menu .meal {
+    flex: 0 0 auto !important;
+    width: 43% !important;
+    padding: 5px !important;
+    font-size: 13px !important;
+  }
+
+  #menu .period {
+    flex: 0 0 auto !important;
+    margin: 6px 0 7px !important;
+    font-size: 10px !important;
+  }
+
+  #menu .cards {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr 1fr 1fr !important;
+    gap: 7px !important;
+  }
+
+  #menu .day {
+    height: auto !important;
+    min-height: 0 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    break-inside: avoid !important;
+  }
+
+  #menu .day:last-child {
+    grid-column: 1 / -1 !important;
+    width: calc(50% - 3.5px) !important;
+    justify-self: center !important;
+  }
+
+  #menu .day-head {
+    flex: 0 0 auto !important;
+    padding: 6px !important;
+  }
+  #menu .day-head b { font-size: 13px !important; }
+  #menu .day-head span { font-size: 9px !important; }
+
+  #menu .dish {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 8px 10px !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+  #menu .dish:before {
+    font-size: 19px !important;
+    margin-bottom: 4px !important;
+  }
+
+  #menu .footer {
+    flex: 0 0 auto !important;
+    margin-top: 7px !important;
+    padding: 1px 0 0 !important;
+  }
+  #menu .footer .quote { font-size: 18px !important; line-height: 1.05 !important; }
+  #menu .footer .admin {
+    font-size: 8.5px !important;
+    margin-top: 3px !important;
+    color: #f4c400 !important;
+  }
+
+  #menu .watermark {
+    width: 105mm !important;
+    height: 105mm !important;
+    top: 58% !important;
+  }
+
+  .top, .panel, .hint, .actions { display: none !important; }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
