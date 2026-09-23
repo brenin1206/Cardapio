@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardápio Semanal | Paraíso do Tuiuti</title>
+<style>
+:root{--blue:#062d78;--blue2:#004aa5;--yellow:#ffc928;--ink:#102a55;--paper:#fffdf8;--muted:#6b7280}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef3f8;color:var(--ink)}
+.app{max-width:1180px;margin:auto;padding:24px}.top{display:flex;align-items:center;gap:18px;margin-bottom:20px}.top img{width:78px;height:78px;object-fit:contain}.top h1{margin:0;color:var(--blue);font-size:28px}.top p{margin:4px 0 0;color:#667085}
+.grid{display:grid;grid-template-columns:360px 1fr;gap:24px}.panel{background:white;border-radius:20px;padding:22px;box-shadow:0 10px 30px #0b2b5a14}.panel h2{margin:0 0 18px;color:var(--blue)}
+label{font-weight:700;font-size:13px;display:block;margin:14px 0 6px}input,textarea{width:100%;border:1px solid #d5dce6;border-radius:10px;padding:11px;font:inherit}textarea{min-height:74px;resize:vertical}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:12px;padding:13px 14px;font-weight:800;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:var(--yellow);color:var(--blue)}
+.preview-wrap{overflow:auto;background:#dfe7f0;border-radius:20px;padding:20px}.menu{width:210mm;min-height:297mm;margin:auto;background:var(--paper);position:relative;overflow:hidden;padding:13mm 13mm 12mm;box-shadow:0 8px 30px #0002}
+.menu:before,.menu:after{content:"";position:absolute;width:240px;height:240px;border:28px solid var(--yellow);border-radius:50%;opacity:.16;z-index:0}.menu:before{left:-170px;top:-150px}.menu:after{right:-170px;bottom:-150px;border-color:var(--blue2)}
+.content{position:relative;z-index:1}.watermark{position:absolute;left:50%;top:57%;transform:translate(-50%,-50%);width:112mm;height:112mm;object-fit:contain;opacity:.055;z-index:0;pointer-events:none;filter:grayscale(10%)}.brand{text-align:center}.brand img{width:34mm;height:34mm;object-fit:contain}.school{font-weight:900;letter-spacing:2px;font-size:16px;color:var(--blue);margin-top:2px}.title{margin:8px -13mm 0;background:linear-gradient(100deg,var(--blue),var(--blue2));color:white;padding:8mm 8mm 6mm;text-align:center;position:relative}.title h2{font-size:34px;margin:0;letter-spacing:1px}.title .script{font-family:"Brush Script MT","Segoe Script",cursive;color:var(--yellow);font-size:38px;font-weight:400;line-height:.9}.meal{width:45%;margin:-2px auto 0;background:var(--yellow);color:var(--blue);font-weight:900;text-align:center;border-radius:0 0 18px 18px;padding:7px;font-size:17px}.period{text-align:center;margin:13px 0 14px;font-weight:800;font-size:14px;color:var(--blue)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}.day{border:1px solid #d9dee7;border-radius:16px;overflow:hidden;background:white;box-shadow:0 4px 12px #102a5515;min-height:42mm}.day:last-child{grid-column:1 / -1;width:calc(50% - 6px);justify-self:center}.day-head{background:linear-gradient(135deg,var(--blue),var(--blue2));color:white;text-align:center;padding:8px}.day-head b{display:block;color:var(--yellow);font-size:16px}.day-head span{font-size:12px;font-weight:700}.dish{padding:14px 16px;text-align:center;white-space:pre-line;font-size:14px;line-height:1.45}.dish:before{content:"♨";display:block;color:#d39400;font-size:25px;margin-bottom:3px}.footer{text-align:center;margin-top:14px;color:var(--blue);padding:4px 10px;background:transparent}.footer .quote{font-family:"Brush Script MT","Segoe Script",cursive;font-size:22px;color:var(--blue)}.footer .admin{font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:600;letter-spacing:.3px;margin-top:5px;color:#f4c400;text-transform:none}.hint{font-size:12px;color:#667085;margin-top:10px}
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}.app{padding:12px}.top{gap:12px}.top img{width:58px;height:58px}.top h1{font-size:22px}.top p{font-size:13px}
+  .panel{padding:16px;border-radius:16px}.panel h2{font-size:20px}.actions{position:sticky;bottom:8px;z-index:20;background:#fff;padding:8px 0 2px}.btn{min-height:48px;font-size:14px}
+  input,textarea{font-size:16px;padding:13px}textarea{min-height:88px}.preview-wrap{padding:8px;border-radius:14px;overflow:hidden}
+  .menu{width:100%;min-height:auto;margin:0;padding:18px 14px 16px;box-shadow:none}.menu:before,.menu:after{transform:scale(.7)}
+  .watermark{width:65vw;height:65vw;max-width:360px;max-height:360px}.brand img{width:82px;height:82px}.school{font-size:12px;letter-spacing:1px}
+  .title{margin:8px -14px 0;padding:22px 10px 16px}.title h2{font-size:27px}.title .script{font-size:32px}.meal{width:58%;font-size:15px}.period{font-size:12px}
+  .cards{grid-template-columns:1fr;gap:10px}.day,.day:last-child{grid-column:auto;width:100%;min-height:auto}.day-head{padding:7px}.dish{padding:12px;font-size:14px;min-height:72px}
+  .footer .quote{font-size:19px}.footer .admin{font-size:10px}.hint{line-height:1.4}
+}
+@media(max-width:430px){.app{padding:8px}.top{margin-bottom:12px}.panel{padding:14px}.preview-wrap{padding:4px}.menu{padding:14px 10px}.title{margin-left:-10px;margin-right:-10px}.title h2{font-size:24px}.title .script{font-size:29px}.meal{width:66%}}
+
+@media print{
+  @page{size:A4 portrait;margin:0}
+  html,body{margin:0!important;padding:0!important;background:#fff!important;width:210mm!important;height:297mm!important;overflow:hidden!important}
+  body *{visibility:hidden!important}
+  .app,.grid,.preview-wrap{margin:0!important;padding:0!important;width:210mm!important;height:297mm!important;display:block!important;background:#fff!important;overflow:hidden!important}
+  .top,.panel{display:none!important}
+  .menu,.menu *{visibility:visible!important}
+  .menu{position:absolute!important;left:0!important;top:0!important;width:210mm!important;height:297mm!important;min-height:297mm!important;max-height:297mm!important;margin:0!important;padding:6mm 10mm 5mm!important;box-shadow:none!important;overflow:hidden!important;page-break-inside:avoid!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .menu:before,.menu:after,.content,.watermark{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .watermark{top:57%!important;width:94mm!important;height:94mm!important}
+  .brand img{width:20mm!important;height:20mm!important}
+  .school{font-size:9px!important;letter-spacing:1.2px!important;margin-top:0!important}
+  .title{margin:3mm -10mm 0!important;padding:3mm 5mm 2.5mm!important}
+  .title h2{font-size:22px!important;line-height:1!important}
+  .title .script{font-size:26px!important;line-height:.82!important}
+  .meal{width:42%!important;margin:-1px auto 0!important;padding:4px!important;font-size:11px!important;border-radius:0 0 12px 12px!important}
+  .period{margin:4mm 0 3mm!important;font-size:9px!important}
+  .cards{display:grid!important;grid-template-columns:1fr 1fr!important;gap:2.5mm!important}
+  .day{min-height:0!important;height:45mm!important;border-radius:10px!important;box-shadow:0 2px 6px #102a5512!important}
+  .day:last-child{grid-column:1 / -1!important;width:calc(50% - 1.25mm)!important;justify-self:center!important}
+  .day-head{padding:4px!important}
+  .day-head b{font-size:11px!important;line-height:1.05!important}
+  .day-head span{font-size:8px!important;line-height:1!important}
+  .dish{padding:5px 9px!important;font-size:9px!important;line-height:1.22!important}
+  .dish:before{font-size:15px!important;margin-bottom:1px!important}
+  .footer{margin-top:2.5mm!important;padding:0!important}
+  .footer .quote{font-size:15px!important;line-height:1!important}
+  .footer .admin{font-size:8px!important;margin-top:2px!important;color:#f4c400!important}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><img src="logo-tuiuti.png" alt="Logo Paraíso do Tuiuti"><div><h1>Cardápio Semanal</h1><p>Paraíso do Tuiuti • almoço de segunda a sexta</p></div></div>
+  <div class="grid">
+    <section class="panel">
+      <h2>Preencher cardápio</h2>
+      <label>Segunda-feira da semana</label><input type="date" id="start">
+      <div id="fields"></div>
+      <div class="actions"><button class="btn secondary" onclick="clearMenu()">LIMPAR</button><button class="btn primary" onclick="generatePDF()">GERAR PDF</button></div>
+      <div class="hint">Funciona no computador e no celular. Ao tocar em GERAR PDF, use a opção do navegador para salvar/compartilhar como PDF.</div>
+    </section>
+    <div class="preview-wrap" aria-label="Prévia do cardápio">
+      <article class="menu" id="menu">
+        <img class="watermark" src="logo-tuiuti.png" alt="">
+        <div class="content">
+          <div class="brand"><img src="logo-tuiuti.png" alt="Logo"><div class="school">G.R.E.S. PARAÍSO DO TUIUTI</div></div>
+          <div class="title"><h2>CARDÁPIO</h2><div class="script">da Semana</div></div>
+          <div class="meal">ALMOÇO</div>
+          <div class="period" id="period">SELECIONE A SEMANA</div>
+          <div class="cards" id="cards"></div>
+          <div class="footer"><div class="quote">“Nós somos do tamanho dos nossos sonhos”</div><div class="admin">Administração: Renato Thor</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<script>
+const days=['Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira'];
+const fields=document.getElementById('fields'), cards=document.getElementById('cards');
+days.forEach((d,i)=>{
+  fields.insertAdjacentHTML('beforeend',`<label>${d}</label><textarea id="m${i}" placeholder="Ex.: Arroz\nFeijão\nFrango assado\nSalada"></textarea>`);
+  cards.insertAdjacentHTML('beforeend',`<div class="day"><div class="day-head"><b>${d.toUpperCase()}</b><span id="date${i}">--/--</span></div><div class="dish" id="dish${i}">A definir</div></div>`);
+  document.getElementById('m'+i).addEventListener('input',update);
+});
+document.getElementById('start').addEventListener('change',update);
+function brDate(d){return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});} 
+function fullDate(d){return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'}).toUpperCase();}
+function update(){
+  const v=document.getElementById('start').value;
+  if(v){const base=new Date(v+'T12:00:00'); const end=new Date(base);end.setDate(base.getDate()+4);document.getElementById('period').textContent=fullDate(base)+' A '+fullDate(end);days.forEach((_,i)=>{let d=new Date(base);d.setDate(base.getDate()+i);document.getElementById('date'+i).textContent=brDate(d);});}
+  else{document.getElementById('period').textContent='SELECIONE A SEMANA';days.forEach((_,i)=>document.getElementById('date'+i).textContent='--/--');}
+  days.forEach((_,i)=>{document.getElementById('dish'+i).textContent=document.getElementById('m'+i).value.trim()||'A definir';});
+  save();
+}
+function save(){const data={start:document.getElementById('start').value,menus:days.map((_,i)=>document.getElementById('m'+i).value)};localStorage.setItem('tuiuti-cardapio',JSON.stringify(data));}
+function load(){try{const d=JSON.parse(localStorage.getItem('tuiuti-cardapio'));if(!d)return;document.getElementById('start').value=d.start||'';(d.menus||[]).forEach((v,i)=>{if(document.getElementById('m'+i))document.getElementById('m'+i).value=v;});}catch(e){}update();}
+function clearMenu(){if(!confirm('Limpar todo o cardápio preenchido?'))return;document.getElementById('start').value='';days.forEach((_,i)=>document.getElementById('m'+i).value='');update();}
+function generatePDF(){update();window.print();}
+load();
+</script>
+</body>
+</html>
