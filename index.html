@@ -310,6 +310,112 @@ label{font-weight:700;font-size:13px;display:block;margin:14px 0 6px}input,texta
 }
 </style>
 
+
+<style>
+/* Ajuste final: mantém a folha preenchida sem cortar sexta-feira nem rodapé */
+@media print {
+  #menu {
+    padding: 6mm 8mm 5mm !important;
+  }
+
+  #menu .content {
+    height: 286mm !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #menu .brand img {
+    width: 22mm !important;
+    height: 22mm !important;
+  }
+  #menu .school { font-size: 9.5px !important; }
+
+  #menu .title {
+    margin-top: 2mm !important;
+    padding: 3mm 5mm 2.4mm !important;
+  }
+  #menu .title h2 { font-size: 24px !important; }
+  #menu .title .script { font-size: 28px !important; }
+
+  #menu .meal {
+    padding: 4px !important;
+    font-size: 11px !important;
+  }
+
+  #menu .period {
+    margin: 4px 0 5px !important;
+    font-size: 8.5px !important;
+  }
+
+  #menu .cards {
+    flex: 0 0 auto !important;
+    height: 202mm !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 64mm 64mm 64mm !important;
+    gap: 5mm 2mm !important;
+  }
+
+  #menu .day {
+    height: 64mm !important;
+    min-height: 64mm !important;
+    max-height: 64mm !important;
+  }
+
+  #menu .day:last-child {
+    grid-column: 1 / -1 !important;
+    width: calc(50% - 1mm) !important;
+    justify-self: center !important;
+  }
+
+  #menu .day-head {
+    padding: 5px !important;
+  }
+  #menu .day-head b { font-size: 11px !important; }
+  #menu .day-head span { font-size: 8px !important; }
+
+  #menu .dish {
+    display: block !important;
+    flex: none !important;
+    padding: 8px 10px 5px !important;
+    font-size: 9.5px !important;
+    line-height: 1.18 !important;
+    overflow: visible !important;
+  }
+
+  #menu .dish:before {
+    font-size: 17px !important;
+    margin: 0 0 3px !important;
+  }
+
+  #menu .footer {
+    display: block !important;
+    flex: 0 0 auto !important;
+    margin-top: 4mm !important;
+    padding: 0 !important;
+    visibility: visible !important;
+  }
+
+  #menu .footer,
+  #menu .footer * {
+    visibility: visible !important;
+  }
+
+  #menu .footer .quote {
+    display: block !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+  }
+
+  #menu .footer .admin {
+    display: block !important;
+    font-size: 8px !important;
+    margin-top: 3px !important;
+    color: #f4c400 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
